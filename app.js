@@ -17,6 +17,10 @@ const movieArea = document.querySelector("#movie-area");
 
 const playingURL = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1`;
 
+//Display default without form submit
+window.onload = function () {
+  getPlayingResults();
+}
 // 1. control form submit behavior with JS
 movieForm.addEventListener("submit", getResults);
 
@@ -26,21 +30,27 @@ async function getResults(evt) {
     const movieInput = evt.target.searchBar;
     const movie = movieInput.value;
     console.log("Movie search", movie)
-    //const apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&page=1&include_adult=false&query=${movie}
+    const apiSearchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&page=1&include_adult=false&query=${movie}
     //`;
-    const apiUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1
-    `;
-    console.log("api URL is", apiUrl);
+    console.log("api URL is", apiSearchUrl);
         
     // 2. On form submit, go to the Giphy API
-    const response = await fetch(apiUrl);
+    const response = await fetch(apiSearchUrl);
     const responseData = await response.json();
     console.log("response stuff", response, responseData.results);
     responseData.results.forEach(element => displayMovies(element.poster_path, element.original_title, element.vote_average));
-    //responseData.results.forEach(console.log("Poop"));
-    /*console.log(responseData.results[0]);
-    console.log(responseData.results[1]);
-    console.log(responseData.results[2]);*/
+}
+
+async function getPlayingResults() {
+  const apiPlayingUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1
+  `;
+  console.log("api URL is", apiPlayingUrl);
+      
+  // 2. On form submit, go to the Giphy API
+  const response = await fetch(apiPlayingUrl);
+  const responseData = await response.json();
+  console.log("response stuff", response, responseData.results);
+  responseData.results.forEach(element => displayMovies(element.poster_path, element.original_title, element.vote_average));
 }
 
 function displayMovies(poster, title, rating) {
