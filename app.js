@@ -1,7 +1,7 @@
 console.log("page loaded");
 
 //Global Constants
-const apiKey = "15c5939e9b145d8147a78e01270d0614";
+const apiKey = "OOGABOOGA";
 const limit = 9;
 const rating = "g";
 
