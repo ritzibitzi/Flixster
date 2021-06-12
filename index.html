@@ -8,17 +8,23 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1 id="header">Flixster</h1>
-    <p id="attribution">Powered By [Insert API Source here]</p>
-    <form class="top">
-        <input type="text" name="searchBar" required placeholder="Pick a flick!">
-        <button id="submit">Submit</button>
-    </form>
+    <div class="row">
+        <img src="https://cdn.discordapp.com/attachments/361325940791443457/853056737942306816/Untitled_Artwork.PNG" width="75px" height="75px">
+        <h1 id="header">Flixster</h1>
+        <!--<p id="attribution">Powered By [Insert API Source here]</p>-->
+        <form class="top">
+            <input type="text" name="searchBar" required placeholder="Pick a flick!">
+            <button id="submit">Submit</button>
+            <button id="reset">Reset</button>
+        </form>
+    </div>
 
     <div class="results">
         <div id="movie-area">
         </div>
     </div>
+
+    <button class="hidden loadMore">Load More</button>
     <script src="app.js"></script>
 </body>
 </html>
