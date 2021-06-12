@@ -18,6 +18,7 @@ var movieArea = document.querySelector("#movie-area");
 
 const loadMore = document.querySelector(".loadMore");
 var page = 1;
+var otherP = 1;
 var movieName = "";
 const playingURL = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=${page}`;
 
@@ -31,6 +32,7 @@ loadMore.addEventListener("click", showMore);
 
 reset.addEventListener("click", function() {
   movieArea.innerHTML = "";
+  page = 1;
   getPlayingResults();
 });
 
@@ -48,6 +50,7 @@ async function getMoreResults() {
   console.log("response stuff", response, responseData.results);
   responseData.results.forEach(element => displayMovies(element.poster_path, element.original_title, element.vote_average));
   loadMore.classList.remove("hidden");
+  search.value = "";
 }
 
 //Create a new function, getResults, that get results from the API. 
@@ -57,7 +60,7 @@ async function getResults(evt) {
     const movie = movieInput.value;
     movieName = movie;
     console.log("Movie search", movie)
-    const apiSearchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&page=${page}&include_adult=false&query=${movie}
+    const apiSearchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&page=${otherP}&include_adult=false&query=${movie}
     //`;
     console.log("api URL is", apiSearchUrl);
         
@@ -68,6 +71,7 @@ async function getResults(evt) {
     movieArea.innerHTML = "";
     responseData.results.forEach(element => displayMovies(element.poster_path, element.original_title, element.vote_average));
     loadMore.classList.add("hidden");  
+    search.value = "";
 }
 
 async function getPlayingResults() {
@@ -89,6 +93,7 @@ function displayMovies(poster, title, rating) {
       <img src="https://image.tmdb.org/t/p/w500${poster}" width="500" height="750" class="pic" alt="${title}"/>` + `<br><div class="title">${title}</div>` + `<div class="rating"><img src="https://www.pinclipart.com/picdir/big/31-311255_star-clipart-star-with-black-background-png-download.png" width="20px" height="20px"/>${rating}</div></myMovie>`
     ;
   } 
+  
   
 function handleFormSubmit(evt) {
     movieArea.innerHTML = "";

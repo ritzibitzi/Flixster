@@ -99,3 +99,11 @@ h1 {
     font-size: 20px;
     font-weight: bold;
 }
+
+.loadMore {
+    margin: auto;
+    border: 1px solid white;
+    height: 50px;
+    width: 100px;
+    margin-bottom: 25px;
+}
