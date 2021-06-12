@@ -77,8 +77,25 @@ form input[type=text] {
 
 body {
     font-family: 'Courier New', monospace;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 
 h1 {
     font-weight: normal;
+}
+
+.pic {
+    border: 1px solid black;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.rating {
+    font-size: 20px;
+    font-weight: bold;
 }

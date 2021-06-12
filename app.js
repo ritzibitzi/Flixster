@@ -86,7 +86,7 @@ async function getPlayingResults() {
 
 function displayMovies(poster, title, rating) {
     movieArea.innerHTML = movieArea.innerHTML + `<div class="myMovie">
-      <img src="https://image.tmdb.org/t/p/w500${poster}" class="pic" alt="${title}"/>` + `<br><div class="title">${title}</div>` + `<div class="rating"><img src="https://www.pinclipart.com/picdir/big/31-311255_star-clipart-star-with-black-background-png-download.png" width="10px" height="10px"/>${rating}</div></myMovie>`
+      <img src="https://image.tmdb.org/t/p/w500${poster}" width="500" height="750" class="pic" alt="${title}"/>` + `<br><div class="title">${title}</div>` + `<div class="rating"><img src="https://www.pinclipart.com/picdir/big/31-311255_star-clipart-star-with-black-background-png-download.png" width="20px" height="20px"/>${rating}</div></myMovie>`
     ;
   } 
   
